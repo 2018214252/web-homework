@@ -1,0 +1,9 @@
+POST http://localhost:8080/api/admin/lab
+Content-Type: application/json
+
+{
+  "id": 903,
+  "machineNumber": 70,
+  "details": "null"
+}
+###
