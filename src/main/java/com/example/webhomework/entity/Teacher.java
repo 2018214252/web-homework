@@ -1,5 +1,6 @@
 package com.example.webhomework.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
 
 import java.util.List;
@@ -9,9 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@TableName("teacher")
 public class Teacher {
-    private long id;
+    private long tid;
     private String name;
     private String profession;
-    private List<Course> courses;
 }

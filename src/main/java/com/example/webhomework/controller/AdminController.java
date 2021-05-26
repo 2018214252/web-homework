@@ -1,7 +1,9 @@
 package com.example.webhomework.controller;
 
 import com.example.webhomework.entity.Lab;
+import com.example.webhomework.entity.Teacher;
 import com.example.webhomework.service.LabService;
+import com.example.webhomework.service.TeacherService;
 import com.example.webhomework.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +18,8 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private LabService labService;
+    @Autowired
+    private TeacherService teacherService;
 
     @ApiOperation("添加实验室，并返回当前所有实验室")
     @PostMapping("lab")
@@ -32,14 +36,38 @@ public class AdminController {
     }
 
     @ApiOperation("删除实验室，并返回当前所有实验室")
-    @DeleteMapping("lab")
-    public ResultVO deleteLab(@RequestBody Lab lab){
-        labService.deleteLab(lab);
+    @DeleteMapping("lab/{id}")
+    public ResultVO deleteLab(@PathVariable long id){
+        labService.deleteLab(id);
         return ResultVO.success(Map.of("labs",labService.listLabs()));
     }
 
+    @ApiOperation("查看所有教师信息")
+    @GetMapping("teachers")
+    public ResultVO listTeachers(){
+        return ResultVO.success(Map.of("teachers",teacherService.listTeachers()));
+    }
 
+    @ApiOperation("添加新教师信息，并返回当前所有教师信息")
+    @PostMapping("teacher")
+    public ResultVO insertTeacher(@RequestBody Teacher teacher){
+        teacherService.insertTeacher(teacher);
+        return ResultVO.success(Map.of("teachers",teacherService.listTeachers()));
+    }
 
+    @ApiOperation("删除教师，并返回当前所有教师信息")
+    @DeleteMapping("teacher/{tid}")
+    public ResultVO deleteTeacher(@PathVariable long tid){
+        teacherService.deleteTeacher(tid);
+        return  ResultVO.success(Map.of("teachers",teacherService.listTeachers()));
+    }
+
+    @ApiOperation("更新教师信息，并返回当前所有教师信息")
+    @PatchMapping("teacher")
+    public ResultVO updateTeacher(@RequestBody Teacher teacher){
+        teacherService.updateTeacher(teacher);
+        return ResultVO.success(Map.of("teachers",teacherService.listTeachers()));
+    }
 
 
 }

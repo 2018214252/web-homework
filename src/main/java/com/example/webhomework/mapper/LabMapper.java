@@ -19,5 +19,5 @@ public interface LabMapper {
     public void updateById(Lab lab);
 
     @Delete("delete from lab where id = #{id}")
-    public void remove(Lab lab);
+    public void remove(long id);
 }

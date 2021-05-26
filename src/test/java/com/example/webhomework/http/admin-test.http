@@ -7,3 +7,27 @@ Content-Type: application/json
   "details": "null"
 }
 ###
+DELETE http://localhost:8080/api/admin/lab/906
+###
+GET http://localhost:8080/api/admin/teachers
+###
+POST http://localhost:8080/api/admin/teacher
+Content-Type: application/json
+
+{
+  "tid": 2018214255,
+  "name": "aaa",
+  "profession": "信息与计算机工程学院"
+}
+###
+DELETE http://localhost:8080/api/admin/teacher/2018214255
+###
+PATCH http://localhost:8080/api/admin/teacher
+Content-Type: application/json
+
+{
+  "tid": 2018214255,
+  "name": "赵六",
+  "profession": "信息与计算机工程学院"
+}
+###

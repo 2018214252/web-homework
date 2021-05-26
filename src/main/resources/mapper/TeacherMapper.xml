@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.webhomework.mapper.TeacherMapper">
+    <resultMap id="teacherDTOResultMap" type="com.example.webhomework.dto.TeacherDTO">
+        <result column="tid" property="tid" />
+        <result column="name" property="name"/>
+        <result column="profession" property="profession" />
+        <collection property="courses"
+                    columnPrefix="c_"
+                    ofType="com.example.webhomework.entity.Course"
+                    autoMapping="true">
+        </collection>
+    </resultMap>
+
+    <select id="getByXML" resultMap="teacherDTOResultMap">
+        select t.*,
+               c.cid c_cid,
+               c.tid c_tid,
+               c.name c_name,
+               c.classHour c_classHour,
+               c.studentNumber c_studentNumber
+        from teacher t join course c on t.tid = c.tid
+        where t.tid = #{tid}
+    </select>
+</mapper>

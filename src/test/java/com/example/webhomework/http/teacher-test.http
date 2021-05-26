@@ -1,0 +1,12 @@
+###
+POST http://localhost:8080/api/teacher/2018214252/course
+Content-Type: application/json
+
+{
+  "name": "web系统框架",
+  "classHour": 48,
+  "studentNumber": 60
+}
+###
+GET http://localhost:8080/api/teacher/2018214252/information
+###

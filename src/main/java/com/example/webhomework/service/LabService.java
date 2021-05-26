@@ -28,7 +28,7 @@ public class LabService {
         labMapper.updateById(lab);
     }
 
-    public void deleteLab(Lab lab){
-        labMapper.remove(lab);
+    public void deleteLab(long id){
+        labMapper.remove(id);
     }
 }
