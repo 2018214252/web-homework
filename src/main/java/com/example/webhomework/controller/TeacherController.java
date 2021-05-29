@@ -28,12 +28,6 @@ public class TeacherController {
     @Autowired
     private CourseService courseService;
 
-    @ApiOperation("得到该指定教师信息")
-    @GetMapping("information")
-    public ResultVO getTeacher(@PathVariable long tid){
-        return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
-    }
-
     @ApiOperation("添加课程，并返回指定教师信息")
     @PostMapping("course")
     public ResultVO insertCourse(@PathVariable long tid, @RequestBody Course course){
@@ -52,5 +46,4 @@ public class TeacherController {
         courseService.deleteCourse(cid);
         return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
     }
-
 }

@@ -2,8 +2,10 @@ package com.example.webhomework.controller;
 
 import com.example.webhomework.entity.Lab;
 import com.example.webhomework.entity.Teacher;
+import com.example.webhomework.entity.User;
 import com.example.webhomework.service.LabService;
 import com.example.webhomework.service.TeacherService;
+import com.example.webhomework.service.UserService;
 import com.example.webhomework.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +22,8 @@ public class AdminController {
     private LabService labService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private UserService userService;
 
     @ApiOperation("添加实验室，并返回当前所有实验室")
     @PostMapping("lab")
@@ -67,6 +71,13 @@ public class AdminController {
     public ResultVO updateTeacher(@RequestBody Teacher teacher){
         teacherService.updateTeacher(teacher);
         return ResultVO.success(Map.of("teachers",teacherService.listTeachers()));
+    }
+
+    @ApiOperation("添加教师账号")
+    @PostMapping("user")
+    public ResultVO addUser(@RequestBody User user){
+        userService.insertUser(user);
+        return ResultVO.success(Map.of());
     }
 
 

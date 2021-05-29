@@ -31,3 +31,13 @@ Content-Type: application/json
   "profession": "信息与计算机工程学院"
 }
 ###
+POST http://localhost:8080/api/admin/user
+Content-Type: application/json
+
+{
+  "id": 1,
+  "role": 9,
+  "userName": "admin",
+  "password": "admin"
+}
+###

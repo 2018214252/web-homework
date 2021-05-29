@@ -1,6 +1,7 @@
 package com.example.webhomework.entity;
 
 import com.example.webhomework.common.Role;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Getter
@@ -10,7 +11,8 @@ import lombok.*;
 @Builder
 public class User {
     private long id;
-    private String userName;
-    private String password;
     private Integer role;
+    private String userName;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
 }

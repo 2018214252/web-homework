@@ -2,3 +2,7 @@
 
 ### API & Swagger3
 http://localhost:8080/swagger-ui/index.html
+管理员初始账号密码：admin/admin
+token:bb6147bab7f6373d3ebc18688f432e259e995fcaedfd3d985122f1cf29a0ba677f110be69788168117c2eb084fa2e57d
+教师初始账号密码：2018214252/123456
+token:3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8

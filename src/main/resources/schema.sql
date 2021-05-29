@@ -27,3 +27,13 @@ create table if not exists course
     update_time datetime not null default current_timestamp on update current_timestamp,
     index (tid)
 );
+
+create table if not exists user
+(
+    id bigint(19) not null primary key ,
+    role int(5),
+    userName varchar(45),
+    password varchar(45),
+    create_time datetime not null default current_timestamp,
+    update_time datetime not null default current_timestamp on update current_timestamp
+);
