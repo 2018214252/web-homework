@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @TableName("lab")
 public class Lab {
-    private long id;
+    private Long id;
     private int machineNumber;
     private String details;
 }

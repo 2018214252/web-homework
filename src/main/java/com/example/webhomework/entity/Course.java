@@ -10,8 +10,8 @@ import lombok.*;
 @Builder
 @TableName("course")
 public class Course {
-    private long cid;
-    private long tid;
+    private Long id;
+    private Long tid;
     private String name;
     private int classHour;
     private int studentNumber;

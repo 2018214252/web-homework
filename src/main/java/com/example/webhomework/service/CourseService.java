@@ -15,4 +15,12 @@ public class CourseService {
     public void insertCourse(Course course){
         courseMapper.insert(course);
     }
+
+    public void updateCourse(Course course){
+        courseMapper.update(course);
+    }
+
+    public void deleteCourse(long id){
+        courseMapper.remove(id);
+    }
 }

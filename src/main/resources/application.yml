@@ -17,3 +17,17 @@ logging:
       example: debug
   pattern:
     console: '%-5level %C.%M[%line] - %msg%n'
+
+mybatis-plus:
+  configuration:
+    call-setters-on-nulls: true
+
+my:
+  secretkey: R28K42ZEJ8LWRHU5
+  salt: 636eac2534bcfcb0
+
+server:
+  port: 8080
+
+
+

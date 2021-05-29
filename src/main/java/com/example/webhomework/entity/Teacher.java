@@ -12,7 +12,7 @@ import java.util.List;
 @Builder
 @TableName("teacher")
 public class Teacher {
-    private long tid;
+    private Long id;
     private String name;
     private String profession;
 }

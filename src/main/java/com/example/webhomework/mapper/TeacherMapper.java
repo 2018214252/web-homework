@@ -13,12 +13,11 @@ import java.util.List;
 public interface TeacherMapper extends BaseMapper<Teacher> {
     @Select("select * from teacher")
     List<Teacher> listTeachers();
-    @Delete("delete from teacher where tid = #{tid}")
+    @Delete("delete from teacher where id = #{id}")
     public void remove(long tid);
-    @Update("update teacher set name = #{name}, profession = #{profession} where tid = #{tid}")
+    @Update("update teacher set name = #{name}, profession = #{profession} where id = #{id}")
     public void update(Teacher teacher);
-    @Select("select * from teacher where tid = #{tid}")
-    Teacher getTeacherById(long tid);
+    @Select("select * from teacher where id = #{id}")
 
-    TeacherDTO getByXML(long tid);
+    TeacherDTO getTea(long tid);
 }

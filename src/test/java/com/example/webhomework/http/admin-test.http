@@ -15,8 +15,8 @@ POST http://localhost:8080/api/admin/teacher
 Content-Type: application/json
 
 {
-  "tid": 2018214255,
-  "name": "aaa",
+  "id": 2018214254,
+  "name": "王五",
   "profession": "信息与计算机工程学院"
 }
 ###

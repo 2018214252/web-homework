@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/api/teacher/2018214252/course
+POST http://localhost:8080/api/teacher/2018214253/course
 Content-Type: application/json
 
 {
@@ -8,5 +8,7 @@ Content-Type: application/json
   "studentNumber": 60
 }
 ###
-GET http://localhost:8080/api/teacher/2018214252/information
+GET http://localhost:8080/api/teacher/2018214253/information
+###
+DELETE http://localhost:8080/api/teacher/2018214253/course/1398531769807433730
 ###

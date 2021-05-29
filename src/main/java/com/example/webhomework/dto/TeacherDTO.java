@@ -12,8 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 public class TeacherDTO {
-    private long tid;
+    private Long id;
     private String name;
     private String profession;
     private List<Course> courses;

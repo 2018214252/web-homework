@@ -35,7 +35,7 @@ public class TeacherService {
     }
 
     public TeacherDTO getTeacher(long tid){
-        return teacherMapper.getByXML(tid);
+        return teacherMapper.getTea(tid);
     }
 
 }
