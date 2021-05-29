@@ -17,7 +17,7 @@ import java.util.Map;
 
 @Api(value = "处理教师操作请求", tags = {"Authorization, Teacher"})
 @RestController
-@RequestMapping("/api/teacher/{tid}")
+@RequestMapping("/api/teacher")
 @Slf4j
 
 public class TeacherController {
@@ -30,7 +30,7 @@ public class TeacherController {
 
     @ApiOperation("添加课程，并返回指定教师信息")
     @PostMapping("course")
-    public ResultVO insertCourse(@PathVariable long tid, @RequestBody Course course){
+    public ResultVO insertCourse(@RequestAttribute("uid") long tid, @RequestBody Course course){
         log.debug(course.getName());
         log.debug("{}",course.getClassHour());
         log.debug("{}",course.getStudentNumber());
@@ -42,7 +42,7 @@ public class TeacherController {
 
     @ApiOperation("删除课程，并返回指定教师信息")
     @DeleteMapping("course/{cid}")
-    public ResultVO deleteCourse(@PathVariable long tid, @PathVariable long cid){
+    public ResultVO deleteCourse(@RequestAttribute("uid") long tid, @PathVariable long cid){
         courseService.deleteCourse(cid);
         return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
     }

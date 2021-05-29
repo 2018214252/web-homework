@@ -4,14 +4,12 @@ import com.example.webhomework.common.Role;
 import com.example.webhomework.entity.Lab;
 import com.example.webhomework.service.LabService;
 import com.example.webhomework.service.TeacherService;
+import com.example.webhomework.service.UserService;
 import com.example.webhomework.vo.ResultVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +22,8 @@ public class CommonController {
     private LabService labService;
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private UserService userService;
 
     @ApiOperation("加载所有实验室信息")
     @GetMapping("labs")
@@ -40,6 +40,14 @@ public class CommonController {
         }
         return ResultVO.success(Map.of());
     }
+
+    @ApiOperation("修改密码")
+    @PatchMapping("password")
+    public ResultVO updatePassword(@RequestAttribute("uid") long uid,@RequestBody Map<String,String> map){
+        userService.updatePassword(uid,map.get("password"));
+        return ResultVO.success(Map.of());
+    }
+
 
 
 }
