@@ -32,8 +32,19 @@ create table if not exists user
 (
     id bigint(19) not null primary key ,
     role int(5),
-    userName varchar(45),
+    user_name varchar(45),
     password varchar(45),
     create_time datetime not null default current_timestamp,
     update_time datetime not null default current_timestamp on update current_timestamp
+);
+
+create table if not exists reservation_record
+(
+    id bigint(19) not null primary key ,
+    lid bigint(19),
+    tid bigint(19),
+    course_name varchar(45),
+    week int(5),
+    day int(5),
+    lesson int(5)
 );

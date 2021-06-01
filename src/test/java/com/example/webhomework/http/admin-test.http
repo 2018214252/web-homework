@@ -1,5 +1,6 @@
 POST http://localhost:8080/api/admin/lab
 Content-Type: application/json
+token :bb6147bab7f6373d3ebc18688f432e259e995fcaedfd3d985122f1cf29a0ba677f110be69788168117c2eb084fa2e57d
 
 {
   "id": 903,
@@ -12,15 +13,17 @@ DELETE http://localhost:8080/api/admin/lab/906
 GET http://localhost:8080/api/admin/teachers
 ###
 POST http://localhost:8080/api/admin/teacher
+token: bb6147bab7f6373d3ebc18688f432e259e995fcaedfd3d985122f1cf29a0ba677f110be69788168117c2eb084fa2e57d
 Content-Type: application/json
 
 {
-  "id": 2018214254,
+  "id": 2018214255,
   "name": "王五",
   "profession": "信息与计算机工程学院"
 }
 ###
 DELETE http://localhost:8080/api/admin/teacher/2018214255
+token: bb6147bab7f6373d3ebc18688f432e259e995fcaedfd3d985122f1cf29a0ba677f110be69788168117c2eb084fa2e57d
 ###
 PATCH http://localhost:8080/api/admin/teacher
 Content-Type: application/json
@@ -33,11 +36,12 @@ Content-Type: application/json
 ###
 POST http://localhost:8080/api/admin/user
 Content-Type: application/json
+token:bb6147bab7f6373d3ebc18688f432e259e995fcaedfd3d985122f1cf29a0ba677f110be69788168117c2eb084fa2e57d
 
 {
-  "id": 1,
-  "role": 9,
-  "userName": "admin",
-  "password": "admin"
+  "id": 2018214254,
+  "role": 5,
+  "userName": "2018214254",
+  "password": "123456"
 }
 ###

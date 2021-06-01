@@ -16,19 +16,22 @@ public class LabService {
     @Autowired
     private LabMapper labMapper;
 
-    public List<Lab> listLabs(){
+    public List<Lab> listLabs() {
         return labMapper.list();
     }
 
-    public void insertLab(Lab lab){
+    public void insertLab(Lab lab) {
         labMapper.insert(lab);
     }
 
-    public void updateLab(Lab lab){
+    public void updateLab(Lab lab) {
         labMapper.updateById(lab);
     }
 
-    public void deleteLab(long id){
+    public void deleteLab(long id) {
         labMapper.remove(id);
+    }
+    public Lab getLabById(long id){
+        return labMapper.getLab(id);
     }
 }

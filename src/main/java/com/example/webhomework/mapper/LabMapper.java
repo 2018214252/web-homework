@@ -1,5 +1,6 @@
 package com.example.webhomework.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.webhomework.entity.Lab;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -20,4 +21,7 @@ public interface LabMapper {
 
     @Delete("delete from lab where id = #{id}")
     public void remove(long id);
+
+    @Select("select * from lab where id = #{id}")
+    Lab getLab(long id);
 }

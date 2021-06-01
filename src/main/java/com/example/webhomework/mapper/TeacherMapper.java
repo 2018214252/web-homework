@@ -17,7 +17,11 @@ public interface TeacherMapper extends BaseMapper<Teacher> {
     public void remove(long tid);
     @Update("update teacher set name = #{name}, profession = #{profession} where id = #{id}")
     public void update(Teacher teacher);
-    @Select("select * from teacher where id = #{id}")
+    @Select("select * from teacher where id = #{tid}")
+    TeacherDTO getTea0(long tid);
+    @Select("select * from teacher where id = #{tid}")
+    Teacher getTeacherById(long tid);
+
 
     TeacherDTO getTea(long tid);
 }

@@ -10,3 +10,16 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8080/api/teacher/2018214253/course/1398531769807433730
 ###
+POST http://localhost:8080/api/teacher/record
+Content-Type: application/json
+Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
+
+{
+  "lid": 901,
+  "tid": 2018214252,
+  "courseName": "java程序设计",
+  "week": 1,
+  "day": 1,
+  "lesson": 3
+}
+###

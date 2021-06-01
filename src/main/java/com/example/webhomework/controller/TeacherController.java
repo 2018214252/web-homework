@@ -1,10 +1,10 @@
 package com.example.webhomework.controller;
 
 import com.example.webhomework.entity.Course;
-import com.example.webhomework.mapper.CourseMapper;
+import com.example.webhomework.entity.ReservationRecord;
 import com.example.webhomework.mapper.LabMapper;
-import com.example.webhomework.mapper.TeacherMapper;
 import com.example.webhomework.service.CourseService;
+import com.example.webhomework.service.ReservationRecordService;
 import com.example.webhomework.service.TeacherService;
 import com.example.webhomework.vo.ResultVO;
 import io.swagger.annotations.Api;
@@ -27,6 +27,8 @@ public class TeacherController {
     private TeacherService teacherService;
     @Autowired
     private CourseService courseService;
+    @Autowired
+    private ReservationRecordService reservationRecordService;
 
     @ApiOperation("添加课程，并返回指定教师信息")
     @PostMapping("course")
@@ -45,5 +47,19 @@ public class TeacherController {
     public ResultVO deleteCourse(@RequestAttribute("uid") long tid, @PathVariable long cid){
         courseService.deleteCourse(cid);
         return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
+    }
+
+    @ApiOperation("修改课程信息，并返回教师信息")
+    @PatchMapping("course")
+    public ResultVO updateCourse(@RequestAttribute("uid") long tid, @RequestBody Course course){
+        courseService.updateCourse(course);
+        return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
+    }
+
+    @ApiOperation("预约课程，返回所有预约记录")
+    @PostMapping("record")
+    public ResultVO insertRecord(@RequestBody ReservationRecord reservationRecord){
+        reservationRecordService.insertRecord(reservationRecord);
+        return ResultVO.success(Map.of("records",reservationRecordService.listALLRecords()));
     }
 }

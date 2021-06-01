@@ -7,6 +7,7 @@
         <result column="profession" property="profession" />
         <collection property="courses"
                     columnPrefix="c_"
+                    javaType="ArrayList"
                     ofType="com.example.webhomework.entity.Course"
                     autoMapping="true">
         </collection>

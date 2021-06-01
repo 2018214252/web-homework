@@ -3,6 +3,7 @@ package com.example.webhomework.controller;
 import com.example.webhomework.common.Role;
 import com.example.webhomework.entity.Lab;
 import com.example.webhomework.service.LabService;
+import com.example.webhomework.service.ReservationRecordService;
 import com.example.webhomework.service.TeacherService;
 import com.example.webhomework.service.UserService;
 import com.example.webhomework.vo.ResultVO;
@@ -24,6 +25,8 @@ public class CommonController {
     private TeacherService teacherService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ReservationRecordService reservationRecordService;
 
     @ApiOperation("加载所有实验室信息")
     @GetMapping("labs")
@@ -39,6 +42,12 @@ public class CommonController {
             return ResultVO.success(Map.of("teacher",teacherService.getTeacher(uid)));
         }
         return ResultVO.success(Map.of());
+    }
+
+    @ApiOperation("加载所有预约记录")
+    @GetMapping("records")
+    public ResultVO listAllRecords(){
+        return ResultVO.success(Map.of("records",reservationRecordService.listALLRecords()));
     }
 
     @ApiOperation("修改密码")
