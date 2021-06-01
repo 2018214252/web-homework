@@ -2,13 +2,16 @@ package com.example.webhomework.service;
 
 import com.example.webhomework.entity.User;
 import com.example.webhomework.mapper.UserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
+@Slf4j
 public class UserService {
     @Autowired
     private UserMapper userMapper;
@@ -16,7 +19,9 @@ public class UserService {
     private PasswordEncoder encoder;
 
     public User getUser(String userName){
-        return userMapper.getUser(userName);
+        User user = userMapper.getUser(userName);
+        log.debug("userName: {}",userName);
+        return user;
     }
 
     public void insertUser(User user){

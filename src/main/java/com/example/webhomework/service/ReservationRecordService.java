@@ -3,6 +3,8 @@ package com.example.webhomework.service;
 import com.example.webhomework.entity.ReservationRecord;
 import com.example.webhomework.mapper.ReservationRecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +16,8 @@ public class ReservationRecordService {
     @Autowired
     private ReservationRecordMapper reservationRecordMapper;
 
-    public void insertRecord(ReservationRecord record) {
+    @CacheEvict(value = "records", key = "#tid")
+    public void insertRecord(ReservationRecord record,long tid) {
         reservationRecordMapper.insert(record);
     }
 
@@ -22,11 +25,13 @@ public class ReservationRecordService {
         return reservationRecordMapper.listALLRecords();
     }
 
-    public List<ReservationRecord> getRecords(long tid){
+    @Cacheable(value = "records", key = "#tid")
+    public List<ReservationRecord> getRecords(long tid) {
         return reservationRecordMapper.getRecords(tid);
     }
 
-    public void deleteRecord(long id){
+    @CacheEvict(value = "records", key = "#tid")
+    public void deleteRecord(long id,long tid) {
         reservationRecordMapper.deleteRecord(id);
     }
 

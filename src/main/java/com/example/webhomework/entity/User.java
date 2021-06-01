@@ -12,7 +12,7 @@ import lombok.*;
 @Builder
 @TableName("user")
 public class User {
-    private long id;
+    private Long id;
     private Integer role;
     private String userName;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

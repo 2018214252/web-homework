@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @Builder
 @TableName("reservation_record")
 public class ReservationRecord {
-    private long id;
-    private long lid;
-    private long tid;
+    private Long id;
+    private Long lid;
+    private Long tid;
     private String courseName;
     private int week;//周次
     private int day;//星期几

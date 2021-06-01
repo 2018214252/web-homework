@@ -45,7 +45,7 @@ public class CommonController {
     }
 
     @ApiOperation("加载所有预约记录")
-    @GetMapping("records")
+    @GetMapping("allrecords")
     public ResultVO listAllRecords() {
         return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords()));
     }

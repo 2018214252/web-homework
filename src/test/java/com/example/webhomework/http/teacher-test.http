@@ -1,5 +1,6 @@
 ###
-POST http://localhost:8080/api/teacher/2018214253/course
+POST http://localhost:8080/api/teacher/course
+Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
 Content-Type: application/json
 
 {
@@ -8,7 +9,20 @@ Content-Type: application/json
   "studentNumber": 60
 }
 ###
-DELETE http://localhost:8080/api/teacher/2018214253/course/1398531769807433730
+DELETE http://localhost:8080/api/teacher/course/1399628670292287490
+Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
+###
+PATCH http://localhost:8080/api/teacher/course
+Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
+Content-Type: application/json
+
+{
+  "id": 1399622385807220737,
+  "tid": 2018214252,
+  "name": "web系统框架",
+  "classHour": 525252,
+  "studentNumber": 60
+}
 ###
 POST http://localhost:8080/api/teacher/record
 Content-Type: application/json
@@ -18,7 +32,7 @@ Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65
   "lid": 901,
   "tid": 2018214252,
   "courseName": "java程序设计",
-  "week": 1,
+  "week": 2,
   "day": 1,
   "lesson": 3
 }
@@ -26,4 +40,7 @@ Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65
 GET http://localhost:8080/api/teacher/records
 Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
 
+###
+DELETE http://localhost:8080/api/teacher/record/0
+Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65ce792de3ffebf2443d920f8
 ###

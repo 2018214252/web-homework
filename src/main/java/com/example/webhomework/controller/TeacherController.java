@@ -33,34 +33,30 @@ public class TeacherController {
     @ApiOperation("添加课程，并返回指定教师信息")
     @PostMapping("course")
     public ResultVO insertCourse(@RequestAttribute("uid") long tid, @RequestBody Course course) {
-        log.debug(course.getName());
-        log.debug("{}", course.getClassHour());
-        log.debug("{}", course.getStudentNumber());
         course.setTid(tid);
-        log.debug("{}", course.getTid());
-        courseService.insertCourse(course);
+        courseService.insertCourse(course, tid);
         return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("删除课程，并返回指定教师信息")
     @DeleteMapping("course/{cid}")
     public ResultVO deleteCourse(@RequestAttribute("uid") long tid, @PathVariable long cid) {
-        courseService.deleteCourse(cid);
+        courseService.deleteCourse(cid, tid);
         return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("修改课程信息，并返回教师信息")
     @PatchMapping("course")
     public ResultVO updateCourse(@RequestAttribute("uid") long tid, @RequestBody Course course) {
-        courseService.updateCourse(course);
+        courseService.updateCourse(course, tid);
         return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("预约课程，返回所有预约记录")
     @PostMapping("record")
-    public ResultVO insertRecord(@RequestBody ReservationRecord reservationRecord) {
-        reservationRecordService.insertRecord(reservationRecord);
-        return ResultVO.success(Map.of("records", reservationRecordService.listALLRecords()));
+    public ResultVO insertRecord(@RequestBody ReservationRecord reservationRecord, @RequestAttribute("uid") long tid) {
+        reservationRecordService.insertRecord(reservationRecord, tid);
+        return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords(), "records", reservationRecordService.getRecords(tid)));
     }
 
     @ApiOperation("查看个人预约记录，返回指定教师的预约记录")
@@ -70,9 +66,9 @@ public class TeacherController {
     }
 
     @ApiOperation("取消预约，返回所有预约记录")
-    @DeleteMapping("record")
+    @DeleteMapping("record/{id}")
     public ResultVO deleteRecord(@RequestAttribute("uid") long tid, @PathVariable long id) {
-        reservationRecordService.deleteRecord(id);
+        reservationRecordService.deleteRecord(id, tid);
         return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords(), "records", reservationRecordService.getRecords(tid)));
     }
 }
