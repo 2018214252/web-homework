@@ -44,7 +44,7 @@ public class TeacherService {
         return teacherMapper.listTeachers();
     }
 
-    @Cacheable(value = "teacher", key = "#tid")
+    //@Cacheable(value = "teacher", key = "#tid")
     public TeacherDTO getTeacher(long tid) {
         if (courseMapper.getCourses(tid).size() == 0) {
             TeacherDTO teacherDTO = teacherMapper.getTea0(tid);

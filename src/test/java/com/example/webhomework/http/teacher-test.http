@@ -17,11 +17,11 @@ Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65
 Content-Type: application/json
 
 {
-  "id": 1399622385807220737,
+  "id": 1399633721259241500,
   "tid": 2018214252,
-  "name": "web系统框架",
-  "classHour": 525252,
-  "studentNumber": 60
+  "name": "java程序设计",
+  "classHour": 0,
+  "studentNumber": 0
 }
 ###
 POST http://localhost:8080/api/teacher/record
