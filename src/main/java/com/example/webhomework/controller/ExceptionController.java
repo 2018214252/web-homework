@@ -19,8 +19,8 @@ import java.util.Set;
 @RestControllerAdvice
 public class ExceptionController {
     @ExceptionHandler(MyException.class)
-    public ResultVO handleValidException(MyException exception){
-        return ResultVO.error(exception.getCode(),exception.getMessage());
+    public ResultVO handleValidException(MyException exception) {
+        return ResultVO.error(exception.getCode(), exception.getMessage());
     }
 
     /**
@@ -30,7 +30,7 @@ public class ExceptionController {
      * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResultVO handleValidException(MethodArgumentNotValidException exception){
+    public ResultVO handleValidException(MethodArgumentNotValidException exception) {
         StringBuilder stringBuilder = new StringBuilder();
         exception.getBindingResult()
                 .getFieldErrors()
@@ -40,7 +40,7 @@ public class ExceptionController {
                     stringBuilder.append(e.getDefaultMessage());
                     stringBuilder.append("; ");
                 });
-        return ResultVO.error(400,stringBuilder.toString());
+        return ResultVO.error(400, stringBuilder.toString());
     }
 
     /**
@@ -54,8 +54,8 @@ public class ExceptionController {
     public ResultVO handleMethodArgumentTypeMismatchException(
             MethodArgumentTypeMismatchException exception,
             HttpServletRequest request) {
-        String msg = request.getRequestURI() + ": " + "请求地址参数" +exception.getValue() + "错误";
-        return ResultVO.error(400,msg.toString());
+        String msg = request.getRequestURI() + ": " + "请求地址参数" + exception.getValue() + "错误";
+        return ResultVO.error(400, msg.toString());
     }
 
     /**
@@ -65,7 +65,7 @@ public class ExceptionController {
      * @return
      */
     @ExceptionHandler(InvalidFormatException.class)
-    public ResultVO handleInvalidFormatException (InvalidFormatException exception){
+    public ResultVO handleInvalidFormatException(InvalidFormatException exception) {
         StringBuilder stringBuilder = new StringBuilder();
         exception.getPath()
                 .forEach(p -> {
@@ -74,7 +74,7 @@ public class ExceptionController {
                     stringBuilder.append(", 您输入的值： ").append(exception.getValue());
                     stringBuilder.append(", 类型错误！");
                 });
-        return ResultVO.error(400,stringBuilder.toString());
+        return ResultVO.error(400, stringBuilder.toString());
     }
 
     /**
@@ -90,11 +90,11 @@ public class ExceptionController {
         violations.forEach(v -> {
             stringBuilder.append(v.getMessage()).append("; ");
         });
-        return ResultVO.error(400,stringBuilder.toString());
+        return ResultVO.error(400, stringBuilder.toString());
     }
 
     @ExceptionHandler(Exception.class)
     public ResultVO handleException(Exception exception) {
-        return ResultVO.error(400,"请求错误");
+        return ResultVO.error(400, "请求错误");
     }
 }

@@ -30,33 +30,32 @@ public class CommonController {
 
     @ApiOperation("加载所有实验室信息")
     @GetMapping("labs")
-    private ResultVO getLabs(){
-        List<Lab>labs = labService.listLabs();
-        return ResultVO.success(Map.of("labs",labs));
+    private ResultVO getLabs() {
+        List<Lab> labs = labService.listLabs();
+        return ResultVO.success(Map.of("labs", labs));
     }
 
     @ApiOperation("登录后首页信息，加载教师信息")
     @GetMapping("teacher")
-    public ResultVO getTeacher(@RequestAttribute("uid") long uid, @RequestAttribute("role") int role){
-        if(role == Role.TEACHER){
-            return ResultVO.success(Map.of("teacher",teacherService.getTeacher(uid)));
+    public ResultVO getTeacher(@RequestAttribute("uid") long uid, @RequestAttribute("role") int role) {
+        if (role == Role.TEACHER) {
+            return ResultVO.success(Map.of("teacher", teacherService.getTeacher(uid)));
         }
         return ResultVO.success(Map.of());
     }
 
     @ApiOperation("加载所有预约记录")
     @GetMapping("records")
-    public ResultVO listAllRecords(){
-        return ResultVO.success(Map.of("records",reservationRecordService.listALLRecords()));
+    public ResultVO listAllRecords() {
+        return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords()));
     }
 
     @ApiOperation("修改密码")
     @PatchMapping("password")
-    public ResultVO updatePassword(@RequestAttribute("uid") long uid,@RequestBody Map<String,String> map){
-        userService.updatePassword(uid,map.get("password"));
+    public ResultVO updatePassword(@RequestAttribute("uid") long uid, @RequestBody Map<String, String> map) {
+        userService.updatePassword(uid, map.get("password"));
         return ResultVO.success(Map.of());
     }
-
 
 
 }

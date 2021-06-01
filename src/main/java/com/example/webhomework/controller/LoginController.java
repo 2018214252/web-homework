@@ -31,16 +31,16 @@ public class LoginController {
 
     @ApiOperation(value = "登录")
     @PostMapping("login")
-    public ResultVO login(@RequestBody User user, HttpServletResponse response){
+    public ResultVO login(@RequestBody User user, HttpServletResponse response) {
         User u = userService.getUser(user.getUserName());
         log.debug(user.getUserName());
         log.debug(user.getPassword());
-        if(u == null || !encoder.matches(user.getPassword(),u.getPassword())){
-            return ResultVO.error(401,"用户名密码错误");
+        if (u == null || !encoder.matches(user.getPassword(), u.getPassword())) {
+            return ResultVO.error(401, "用户名密码错误");
         }
-        String token = encryptComponent.encrypt(Map.of("uid",u.getId(),"role",u.getRole()));
+        String token = encryptComponent.encrypt(Map.of("uid", u.getId(), "role", u.getRole()));
         log.debug(token);
-        response.addHeader("token",token);
-        return ResultVO.success(Map.of("uid",u.getId(),"role",u.getRole()));
+        response.addHeader("token", token);
+        return ResultVO.success(Map.of("uid", u.getId(), "role", u.getRole()));
     }
 }

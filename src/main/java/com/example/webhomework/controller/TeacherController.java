@@ -32,34 +32,47 @@ public class TeacherController {
 
     @ApiOperation("添加课程，并返回指定教师信息")
     @PostMapping("course")
-    public ResultVO insertCourse(@RequestAttribute("uid") long tid, @RequestBody Course course){
+    public ResultVO insertCourse(@RequestAttribute("uid") long tid, @RequestBody Course course) {
         log.debug(course.getName());
-        log.debug("{}",course.getClassHour());
-        log.debug("{}",course.getStudentNumber());
+        log.debug("{}", course.getClassHour());
+        log.debug("{}", course.getStudentNumber());
         course.setTid(tid);
-        log.debug("{}",course.getTid());
+        log.debug("{}", course.getTid());
         courseService.insertCourse(course);
-        return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
+        return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("删除课程，并返回指定教师信息")
     @DeleteMapping("course/{cid}")
-    public ResultVO deleteCourse(@RequestAttribute("uid") long tid, @PathVariable long cid){
+    public ResultVO deleteCourse(@RequestAttribute("uid") long tid, @PathVariable long cid) {
         courseService.deleteCourse(cid);
-        return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
+        return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("修改课程信息，并返回教师信息")
     @PatchMapping("course")
-    public ResultVO updateCourse(@RequestAttribute("uid") long tid, @RequestBody Course course){
+    public ResultVO updateCourse(@RequestAttribute("uid") long tid, @RequestBody Course course) {
         courseService.updateCourse(course);
-        return ResultVO.success(Map.of("teacher",teacherService.getTeacher(tid)));
+        return ResultVO.success(Map.of("teacher", teacherService.getTeacher(tid)));
     }
 
     @ApiOperation("预约课程，返回所有预约记录")
     @PostMapping("record")
-    public ResultVO insertRecord(@RequestBody ReservationRecord reservationRecord){
+    public ResultVO insertRecord(@RequestBody ReservationRecord reservationRecord) {
         reservationRecordService.insertRecord(reservationRecord);
-        return ResultVO.success(Map.of("records",reservationRecordService.listALLRecords()));
+        return ResultVO.success(Map.of("records", reservationRecordService.listALLRecords()));
+    }
+
+    @ApiOperation("查看个人预约记录，返回指定教师的预约记录")
+    @GetMapping("records")
+    public ResultVO getRecords(@RequestAttribute("uid") long tid) {
+        return ResultVO.success(Map.of("records", reservationRecordService.getRecords(tid)));
+    }
+
+    @ApiOperation("取消预约，返回所有预约记录")
+    @DeleteMapping("record")
+    public ResultVO deleteRecord(@RequestAttribute("uid") long tid, @PathVariable long id) {
+        reservationRecordService.deleteRecord(id);
+        return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords(), "records", reservationRecordService.getRecords(tid)));
     }
 }

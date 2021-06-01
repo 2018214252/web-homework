@@ -14,12 +14,21 @@ public class ReservationRecordService {
     @Autowired
     private ReservationRecordMapper reservationRecordMapper;
 
-    public void insertRecord(ReservationRecord record){
+    public void insertRecord(ReservationRecord record) {
         reservationRecordMapper.insert(record);
     }
 
-    public List<ReservationRecord> listALLRecords(){
+    public List<ReservationRecord> listALLRecords() {
         return reservationRecordMapper.listALLRecords();
     }
+
+    public List<ReservationRecord> getRecords(long tid){
+        return reservationRecordMapper.getRecords(tid);
+    }
+
+    public void deleteRecord(long id){
+        reservationRecordMapper.deleteRecord(id);
+    }
+
 }
 

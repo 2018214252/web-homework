@@ -2,6 +2,7 @@ package com.example.webhomework.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.webhomework.entity.ReservationRecord;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -13,4 +14,8 @@ import java.util.List;
 public interface ReservationRecordMapper extends BaseMapper<ReservationRecord> {
     @Select("select * from reservation_record")
     List<ReservationRecord> listALLRecords();
+    @Delete("delete from reservation_record where id = #{id}")
+    public void deleteRecord(long id);
+    @Select("select * from reservation_record where tid = #{tid}")
+    List<ReservationRecord> getRecords(long tid);
 }
