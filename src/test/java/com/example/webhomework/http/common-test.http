@@ -18,7 +18,9 @@ token:3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65c
 Content-Type: application/json
 
 {
-  "password": "123456"
+  "userName": "2018214252",
+  "oldPassword": "2018214252",
+  "newPassword": "123456"
 }
 ###
 GET http://localhost:8080/api/common/allrecords

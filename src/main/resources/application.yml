@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mybatis-examples
+    name: WebHomework
   datasource:
     url: 'jdbc:mysql://114.116.213.241:3306/2018214252?
           createDatabaseIfNotExist=true
