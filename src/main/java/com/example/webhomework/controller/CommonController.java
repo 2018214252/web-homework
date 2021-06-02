@@ -47,11 +47,11 @@ public class CommonController {
         return ResultVO.success(Map.of());
     }
 
-    @ApiOperation("加载所有预约记录")
-    @GetMapping("allrecords")
-    public ResultVO listAllRecords() {
-        return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords()));
-    }
+//    @ApiOperation("加载所有预约记录")
+//    @GetMapping("allrecords")
+//    public ResultVO listAllRecords() {
+//        return ResultVO.success(Map.of("allrecords", reservationRecordService.listALLRecords()));
+//    }
 
     @ApiOperation("修改密码")
     @PatchMapping("password")
