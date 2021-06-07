@@ -32,4 +32,8 @@ public class UserService {
     public void updatePassword(long uid, String password){
         userMapper.updateById(User.builder().id(uid).password(encoder.encode(password)).build());
     }
+
+    public void deleteUser(long id){
+        userMapper.deleteUser(id);
+    }
 }
