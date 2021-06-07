@@ -74,3 +74,6 @@ Content-Type: application/json
 DELETE http://localhost:8080/api/admin/teacher/2018214257
 token:95e33650d50e1abf5c9a210291ffb3ba3986bc747f618e664df9cb1088597b73ca7c4f5d89f0435ea12cf5da3870a133
 ###
+PATCH http://localhost:8080/api/admin/password/2018214253
+token:95e33650d50e1abf5c9a210291ffb3ba3986bc747f618e664df9cb1088597b73ca7c4f5d89f0435ea12cf5da3870a133
+###

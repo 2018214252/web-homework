@@ -92,4 +92,11 @@ public class AdminController {
     public ResultVO updateTeacher(@Valid @RequestBody Teacher teacher) {
         return ResultVO.success(Map.of("teachers", teacherService.updateTeacher(teacher)));
     }
+
+    @ApiOperation("重置密码")
+    @PatchMapping("password/{id}")
+    public ResultVO resetPassword(@PathVariable long id){
+        userService.updatePassword(id,String.valueOf(id));
+        return ResultVO.success(Map.of());
+    }
 }
