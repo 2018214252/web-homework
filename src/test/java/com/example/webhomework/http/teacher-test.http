@@ -17,7 +17,7 @@ Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65
 Content-Type: application/json
 
 {
-  "id": 1399633721259241500,
+  "id": 1400687876954456065,
   "tid": 2018214252,
   "name": "java程序设计",
   "classHour": 0,
@@ -32,7 +32,7 @@ Token: 3cd7628297d6842cc71522b2fae079eb7a75b0bbb370cd48c688300024d142be5067feb65
   "lid": 901,
   "tid": 2018214252,
   "courseName": "java程序设计",
-  "week": 4,
+  "week": 6,
   "day": 1,
   "lesson": 3
 }

@@ -46,5 +46,7 @@ create table if not exists reservation_record
     course_name varchar(45),
     week int(5),
     day int(5),
-    lesson int(5)
+    lesson int(5),
+    create_time datetime not null default current_timestamp,
+    update_time datetime not null default current_timestamp on update current_timestamp
 );
